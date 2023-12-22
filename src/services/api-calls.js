@@ -35,18 +35,7 @@ export const loginUser = async (data) => {
   return res.data;
 };
 
-
-// category count total from api to react app
-export const fetchCategoryCount = async () => {
-  return (await axios.get("/categories/count")).data;
-};
-
 // customer
-
-// customer count total from api to react app
-export const fetchCustomerCount = async () => {
-  return (await axios.get("/customers/count")).data;
-};
 
 // product
 
@@ -100,10 +89,11 @@ export const deleteCurrency = async (id) => {
   }
 };
 
-
-export const fetchProductCount = async () => {
-  return (await axios.get("/products/total")).data;
+// fetch total currency count
+export const fetchCurrencyCount = async () => {
+  return (await axios.get("/currency/total")).data;
 };
+
 
 export const checkToken = async (token) => {
   return await axios.post(
@@ -156,3 +146,17 @@ export const addTransaction = async (formData, exchangeRate, userId) => {
     throw error;
   }
 };
+export const fetchTransactionCount = async () => {
+  try {
+    const response = await axios.get("/transactions/total");
+    const totalCount = response.data.totalTransactions;
+
+    console.log("Total Transaction Count:", totalCount);
+
+    return totalCount;
+  } catch (error) {
+    console.error("Error fetching total transaction count:", error);
+    throw error; // Rethrow the error to be handled by the caller if needed
+  }
+};
+

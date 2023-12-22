@@ -13,6 +13,8 @@ import AddCurrency from "./Files/AddCurrency";
 import Transactions from "./Files/Transactions";
 import AddTransaction from "./Files/AddTransaction";
 import Signup from "./Files/Signup";
+import ReportTransactions from "./Files/ReportTransactios";
+import ReportCurrencies from "./Files/ReportCurrencies ";
 
 
 const Dashboard = () => {
@@ -36,6 +38,8 @@ const Dashboard = () => {
             <Route path="/addcurrency" element={<AddCurrency />} />
             <Route path="/transactions" element={<Transactions />} />
             <Route path="/addtransaction" element={<AddTransaction />} />
+            <Route path="/reports" element={<ReportTransactions />} />
+            <Route path="/curencyReport" element={<ReportCurrencies />} />
             
           </Route>
         </Route>

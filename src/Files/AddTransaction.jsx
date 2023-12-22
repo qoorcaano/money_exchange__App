@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; // Import useHistory for redirection
+import { useNavigate } from "react-router-dom";
 import useAuth from "../context/useAuth";
 import { fetchCurrencies, addTransaction } from "../services/api-calls";
 import { toast } from "react-toastify";
@@ -13,11 +13,9 @@ const AddTransaction = () => {
 
   const { user } = useAuth();
   const [currencies, setCurrencies] = useState([]);
-// Create history object for redirection
-  const   navigate = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // Fetch currencies when the component mounts
     fetchCurrencyData();
   }, []);
 
@@ -48,29 +46,18 @@ const AddTransaction = () => {
       ) {
         toast.error("Please fill all the fields");
         return;
-      }
-      else if (formData.currencyFrom === formData.currencyTo) {
-        toast.error("Currency From and Currency To cannot be same");
+      } else if (formData.currencyFrom === formData.currencyTo) {
+        toast.error("Currency From and Currency To cannot be the same");
         return;
-      }
-      // Attempt to add transaction
-      
-      // const exchangeRate = 1.0;
-      // await addTransaction(formData, exchangeRate, user !== null ? user._id : null);
-      // console.log("Transaction successful");
-      // toast.success("Transaction successful");
-
-      // // Redirect to TransactionList upon successful transaction
-      // navigate("/transactions");
-      else{
-      const exchangeRate = 1.0;
-      await addTransaction(formData, exchangeRate, user !== null ? user._id : null);
-      console.log("Transaction successful");
-      toast.success("Transaction successful");
-
-      // Redirect to TransactionList upon successful transaction
-      navigate("/transactions");
-      
+      } else {
+        const exchangeRate = 0.5;
+        await addTransaction(
+          formData,
+          exchangeRate,
+          user !== null ? user._id : null
+        );
+        toast.success("Transaction successful");
+        navigate("/transactions");
       }
     } catch (error) {
       // Error handling
@@ -78,10 +65,12 @@ const AddTransaction = () => {
   };
 
   return (
-    <div className="container mx-auto mt-8">
+    <div className="container mx-auto mt-8 bg-gray-100 p-8 rounded-md shadow-lg">
       <h1 className="text-2xl font-semibold mb-4">Add Transaction</h1>
-      <div className="flex flex-col justify-between px-4 py-3 border-b">
-        <label className="text-xl font-semibold ml-0">User Transaction by:</label>
+      <hr className="mb-6" />
+
+      <div className="flex flex-col justify-between mb-6">
+        <label className="text-xl font-semibold">User Transaction by:</label>
         <input
           className="border border-gray-300 rounded-md px-2 py-1 w-[67%]"
           disabled
@@ -91,7 +80,8 @@ const AddTransaction = () => {
           }
         />
       </div>
-      <form onSubmit={handleSubmit} className="w-[100%] shadow-lg p-6 bg-white rounded-md">
+
+      <form onSubmit={handleSubmit} className="w-full shadow-lg p-6 bg-white rounded-md">
         <div className="mb-4">
           <label className="block text-sm font-medium text-gray-600">
             Amount:

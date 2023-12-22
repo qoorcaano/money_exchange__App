@@ -125,49 +125,23 @@ export default function DashboardSidebar() {
                 <ul className="flex flex-col py-4 space-y-1">
                   <div className="px-5">
                     <Link
-                      to="/customerreport"
-                      className="flex items-center px-2 py-2 text-sm font-medium leading-snug text-white rounded-md dark-mode:text-gray-200 hover:bg-gray-700 dark-mode:hover:bg-white"
-                    >
-                      <FaChartBar className="w-5 h-5" />
-                      <span className="ml-2">Customer Reports</span>
-                    </Link>
-                  </div>
-                  <div className="px-5">
-                    {/* <Link
                       to="/reports"
                       className="flex items-center px-2 py-2 text-sm font-medium leading-snug text-white rounded-md dark-mode:text-gray-200 hover:bg-gray-700 dark-mode:hover:bg-white"
                     >
                       <FaChartBar className="w-5 h-5" />
-                      <span className="ml-2">Sales Order Reports</span>
-                    </Link> */}
-                  </div>
-                  <div className="px-5">
-                    <Link
-                      to="/CategoryReport"
-                      className="flex items-center px-2 py-2 text-sm font-medium leading-snug text-white rounded-md dark-mode:text-gray-200 hover:bg-gray-700 dark-mode:hover:bg-white"
-                    >
-                      <FaChartBar className="w-5 h-5" />
-                      <span className="ml-2">Categories Reports</span>
+                      <span className="ml-2">Transaction Report</span>
                     </Link>
                   </div>
                   <div className="px-5">
                     <Link
-                      to="/productReport"
+                      to="/curencyReport"
                       className="flex items-center px-2 py-2 text-sm font-medium leading-snug text-white rounded-md dark-mode:text-gray-200 hover:bg-gray-700 dark-mode:hover:bg-white"
                     >
                       <FaChartBar className="w-5 h-5" />
-                      <span className="ml-2">Products Reports</span>
+                      <span className="ml-2">Currency Report</span>
                     </Link>
                   </div>
-                  <div className="px-5">
-                    <Link
-                      to="/userReport"
-                      className="flex items-center px-2 py-2 text-sm font-medium leading-snug text-white rounded-md dark-mode:text-gray-200 hover:bg-gray-700 dark-mode:hover:bg-white"
-                    >
-                      <FaChartBar className="w-5 h-5" />
-                      <span className="ml-2">User Reports</span>
-                    </Link>
-                  </div>
+                
                 </ul>
               ) : null}
             </li>
