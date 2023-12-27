@@ -27,7 +27,9 @@ const Dashboard = () => {
         <Route element={<PrivateRoute />}>
           <Route
             element={
-              <div className="flex h-screen bg-gray-200">
+              <div className="flex h-screen bg-gray-200" 
+              
+              >
                 <DashboardSidebar />
               </div>
             }

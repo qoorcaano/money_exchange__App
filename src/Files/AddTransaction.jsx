@@ -46,13 +46,19 @@ const AddTransaction = () => {
       ) {
         toast.error("Please fill all the fields");
         return;
-      } else if (formData.currencyFrom === formData.currencyTo) {
+      } 
+      else if (formData.amount < 0) {
+        toast.error("Amount cannot be negative");
+        return;
+      }
+      else if (formData.currencyFrom === formData.currencyTo) {
         toast.error("Currency From and Currency To cannot be the same");
         return;
       } else {
         const exchangeRate = 0.5;
         await addTransaction(
           formData,
+          
           exchangeRate,
           user !== null ? user._id : null
         );
@@ -87,7 +93,7 @@ const AddTransaction = () => {
             Amount:
           </label>
           <input
-            type="text"
+            type="number"
             name="amount"
             value={formData.amount}
             onChange={handleChange}

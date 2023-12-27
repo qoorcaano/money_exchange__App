@@ -26,7 +26,13 @@ function Signup() {
     ) {
       toast.error("Please fill all the fields");
       return;
-    } else if (password.length < 4 || password !== confirm) {
+    }
+    // if phone is negative or 0
+    else if (phone <= 0 || phone === "") {
+      toast.error("Phone cannot be negative or 0");
+      return;
+    }
+     else if (password.length < 4 || password !== confirm) {
       toast.error(
         "Password and Confirm Password must be same or password digits less then 4"
       );
@@ -37,6 +43,7 @@ function Signup() {
       // Attempt to sign up the user
       const response = await registerUser({ name, email, password ,phone  });
   
+     
       // If successful, store the token, navigate to home, and show success toast
       if(password !== confirm){
         toast.error('Password and confirm password are not same');
@@ -126,7 +133,7 @@ function Signup() {
                 Phone
               </label>
               <input
-                type="phone"
+                type="number"
                 name="phone"
                 id="phone"
                 placeholder="Your Phone"
