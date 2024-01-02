@@ -27,11 +27,29 @@ function Signup() {
       toast.error("Please fill all the fields");
       return;
     }
-    // if phone is negative or 0
-    else if (phone <= 0 || phone === "") {
-      toast.error("Phone cannot be negative or 0");
+    // check name != number
+    else if (!isNaN(name)) {
+      toast.error("Name cannot be number");
       return;
     }
+    // check name include number
+    else if (/\d/.test(name)) {
+      toast.error("Name cannot include number");
+      return;
+    }
+
+    // 
+
+   // check number nagetive and number less then  10 digit
+    else if (phone <= 0 || phone === "" || phone.length < 10) {
+      toast.error("Phone cannot be negative or 0 or less then 10 digit");
+      return;
+    }
+    // else if (phone <= 0 || phone === "") {
+    //   toast.error("Phone cannot be negative or 0");
+    
+    //   return;
+    // }
      else if (password.length < 4 || password !== confirm) {
       toast.error(
         "Password and Confirm Password must be same or password digits less then 4"

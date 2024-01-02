@@ -30,6 +30,15 @@ const AddCurrency = () => {
       toast.error("Please fill all the fields");
       return;
     }
+    else if (!isNaN(currencyName )) {
+      toast.error("Name cannot be number");
+      return;
+    }
+    // check name include number
+    else if (/\d/.test(currencyName)) {
+      toast.error("Name cannot include number");
+      return;
+    }
     try {
       const values = {
         name: currencyName,
